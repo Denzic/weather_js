@@ -20,11 +20,36 @@ document.getElementById("w-change-btn").addEventListener("click", e => {
 
   // Store into localstorage
   storage.setLocationData(city, country)
+
+  // Update Time
+  getTime()
 })
+
+document.querySelector("p").addEventListener("click", refresh)
+
+function refresh(e) {
+  if (e.target.classList.contains("fas")) {
+    getWeather()
+  }
+}
 
 function getWeather() {
   weather
     .getWeather()
     .then(result => ui.paint(result))
     .catch(err => console.log(err))
+  getTime()
+  getDate()
+}
+
+// Get full current time
+function getTime() {
+  const now = new Date()
+  ui.addCurrentTime(now)
+}
+
+// Get current date
+function getDate() {
+  const dataObj = new Date().toDateString()
+  ui.addCurrentDate(dataObj)
 }

@@ -27,4 +27,26 @@ class UI {
 
     this.wind.textContent = `Wind Speed: ${weather.wind.speed} m/s`
   }
+
+  addCurrentTime(time) {
+    const now = document.getElementById("now")
+
+    /* const a = document.createElement("a")
+    const i = document.createElement("i")
+    i.setAttribute("class", "fas fa-sync-alt")
+    a.appendChild(i)
+    let str = a.outerHTML */
+
+    const refreshIcon = `
+      <a style='cursor:pointer'>
+        <i class='fas fa-sync-alt'></i>
+      </a>
+      `
+    now.innerHTML = `${refreshIcon} Updated at: ${time}`
+  }
+
+  addCurrentDate(date) {
+    const dateUi = document.getElementById("date")
+    dateUi.innerHTML = `${date}`
+  }
 }
